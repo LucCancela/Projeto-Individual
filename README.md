@@ -1,2 +1,2 @@
 # Projeto-Individual
-Projeto Individual de Primeiro Semestre do Aluno da SPTech Lucas Cancela
+Projeto Individual de Primeiro Semestre do Aluno do SPTech Lucas Cancela
