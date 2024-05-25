@@ -10,9 +10,10 @@
 
   <script src="./js/sessao.js"></script>
 
-  <link rel="stylesheet" href="./css/estilo.css">
+  <link rel="stylesheet" href="./css/style.css">
   <link rel="icon" href="./assets/icon/favicon2.ico">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -36,6 +37,30 @@
           <a href="login.html">Entrar</a>
         </li>
       </ul>
+    </div>
+  </div>
+
+  <div class="carrosel">
+
+    <div class="carrosel-slide">
+
+      <div class="slide-text">
+        <img src="assets/imgs/1.png" alt="Image 1">
+      </div>
+      <img src="assets/imgs/racionais.jpg" alt="Image 1">
+
+    </div>
+    <div class="carrosel-slide">
+      <img src="assets/imgs/Emicida-@-AmarElo.jpg" alt="Image 3">
+      <div class="slide-text">
+        <img src="assets/imgs/2.png" alt="Image 1">
+      </div>
+    </div>
+    <div class="carrosel-slide">
+      <div class="slide-text">
+        <img src="assets/imgs/3.png" alt="Image 1">
+      </div>
+      <img src="assets/imgs/Sabotagem.jpg" alt="Image 3">
     </div>
   </div>
 
@@ -70,9 +95,12 @@
     </div>
   </div>
 
-  <div class="indices">
-    <div>
-
+  <div class="indices" style="background-color: #f9f9f9;">
+    <div class="indice-texto">
+      <h1>testanto</h1>
+    </div>
+    <div class="indice-grafico">
+      <canvas id="myChart"></canvas>
     </div>
   </div>
 
@@ -86,3 +114,93 @@
 </body>
 
 </html>
+
+<script>
+
+  // JS para o carrosel funcionar e ir passando
+
+  // Armazenadando os elementos do carrosel
+  const carrosel = document.querySelector('.carrosel');
+  const slides = document.querySelectorAll('.carrosel-slide')
+
+  let slideAtual = 0;
+
+  function mostrarSlide(index){
+
+    // Aqui pegamos a função para que os slides possam percorrer todas as imagens calculando seu deslocamento em relação ao slide atual
+    // para que passe de slide forma certa
+    slides.forEach((slide, i) => {
+
+      slide.style.transform = `translateX(${i - index * 100}%)`;
+
+    });
+
+  }
+
+  function proxSlide(){
+
+    slideAtual = (slideAtual + 1) % slides.length;
+    mostrarSlide(slideAtual);
+
+  }
+
+  function anteriorSlide(){
+
+    slideAtual = (slideAtual - 1 + slides.length) % slides.length;
+    mostrarSlide(slideAtual);
+
+  }
+
+  setInterval(proxSlide, 5000);
+
+
+  // FIM do JS do carrosel
+
+// Setup 
+const DATA_COUNT = 7;
+  const NUMBER_CFG = {count: DATA_COUNT, min: -100, max: 100};
+
+  const labels = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'];
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Dataset 1',
+        data: [10, 20, 30, 40, 50, 60, 70], // Substitua esses números pelos seus próprios dados
+        borderColor: 'red',
+        backgroundColor: 'rgba(255, 0, 0, 0.5)',
+      },
+      {
+        label: 'Dataset 2',
+        data: [70, 60, 50, 40, 30, 20, 10], // Substitua esses números pelos seus próprios dados
+        borderColor: 'blue',
+        backgroundColor: 'rgba(0, 0, 255, 0.5)',
+      }
+    ]
+  };
+
+  // Config
+  const config = {
+  type: 'line',
+  data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Line Chart'
+        }
+      }
+    },
+  };
+
+  const ctx = document.getElementById('myChart').getContext('2d');
+  const myChart = new Chart(ctx, config);
+
+
+  // FIM JS do Char.js
+
+</script>
