@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    color: palevioletred;
+    color: rgb(32, 32, 32);
     flex-direction: column;
     height: 60%;
     padding: 20px 0;
@@ -29,6 +29,7 @@
   .card h2 {
     margin: 0;
     font-size: 30px;
+    color: #323232;
   }
   
   .formulario {
@@ -42,6 +43,7 @@
   .formulario span {
     font-size: 15px;
     font-weight: 800;
+    color: #323232;
   }
   
   .formulario input {
@@ -71,21 +73,35 @@
   .botao {
     cursor: pointer;
     font-family: "Barlow", sans-serif;
-    border: 0;
-    border-radius: 5px;
-    font-weight: 600;
-    font-size: 18px;
-    color: #fff;
-    background-color: #e6005a;
+    
+    
     width: 120px;
     height: 30px;
-    align-self: center;
     margin-top: 20px;
-  
+    
+    
+    border: 0;
+    border-radius: 5px;
+    
+    font-weight: 600;
+    font-size: 18px;
+    
+    color: #fff;
+    background-color: #323232;
+
+    align-self: center;
+    
   }
+  
+  .botao a{
+    color: white;
+    text-decoration: none;
+  }
+
   .botao_alinhamento{
     display: flex;
     justify-content: space-evenly;
+    flex-direction: row;
   
   }
   

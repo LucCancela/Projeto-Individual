@@ -61,18 +61,21 @@ function pesquisarDescricao(req, res) {
 }
 
 function publicar(req, res) {
+    var artista = req.body.artista;
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
     var id = req.params.id;
 
-    if (titulo == undefined) {
+    if (artista == undefined) {
+        res.status(400).send("O Nome do Artista está indefinido!");
+    } else if (titulo == undefined) {
         res.status(400).send("O título está indefinido!");
     } else if (descricao == undefined) {
         res.status(400).send("A descrição está indefinido!");
     } else if (id == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        avisoModel.publicar(titulo, descricao, id)
+        avisoModel.publicar(artista, titulo, descricao, id)
             .then(
                 function (resultado) {
                     res.json(resultado);

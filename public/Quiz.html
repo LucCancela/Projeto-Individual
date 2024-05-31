@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Um Mundo Dissonante</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/styleQuiz.css">
+    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+
+    <!--header inicio-->
+    <!-- <div class="header">
+        <div class="container">
+                <h1 class="titulo">
+                    <a href="./index.html">Um Mundo Dissonante</a> 
+                </h1>
+            <ul class="navbar">
+                <li>
+                    <a href="./index.html">Inicial</a>
+                </li>
+                    <a href="#">Quiz</a>
+                <li>|</li>
+                <li>
+                    <a href="./login.html">Entrar</a>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+
+    <h2>Quiz Músicas</h2>
+    <main>
+
+        <div class="container">
+            <span id="span_Qtd"></span>
+            <div id="pergunta"></div>
+            <div id="respostas"></div>
+        </div>
+        <div class="finalizar">
+            <span></span>
+            <button>Reiniciar</button>
+        </div>
+
+    </main>
+
+
+    <!--footer inicio-->
+    <!-- <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+            <span class="version">v1.0.0</span>
+        </div>
+    </div> -->
+    <!--footer fim-->
+
+    
+</body>
+
+</html>
+
+<script>
+const questions = [
+    {
+        question: "Qual é esta música",
+        answers: [
+            { option: "3", correct: true },
+            { option: "2", correct: false },
+            { option: "4", correct: false },
+        ],
+    },
+    {
+        question: "Quanto é 5 x 2?",
+        answers: [
+            { option: "9", correct: false },
+            { option: "10", correct: true },
+            { option: "11", correct: false },
+            
+        ],
+    },
+    {
+        question: "Quanto é 10 x 8?",
+        answers: [
+            { option: "800", correct: false },
+            { option: "90", correct: false },
+            { option: "80", correct: true },
+        ],
+    },
+    {
+        question: "Quanto é 7 x 7?",
+        answers: [
+            { option: "70", correct: false },
+            { option: "56", correct: false },
+            { option: "49", correct: true },
+        ],
+    },
+];
+
+// Puxando todos os campos e botões
+const pergunta = document.querySelector("#pergunta");
+const respostas = document.querySelector("#respostas");
+const span_Qtd = document.querySelector("#span_Qtd");
+const textoFinalizar = document.querySelector(".finalizar span");
+const container = document.querySelector(".container");
+const containerFinalizar = document.querySelector(".finalizar");
+const btnFinalizar = document.querySelector(".finalizar button");
+
+let currentIndex = 0;
+let perguntaCorreta = 0;
+
+function loadQuestion() {
+    span_Qtd.innerHTML = ` ${currentIndex + 1}/${questions.length} `;
+
+    const item = questions[currentIndex];
+
+    pergunta.innerHTML = item.question;
+    respostas.innerHTML = "";
+
+
+    // Este forEach percorre o objeto resposta, para que cada resposta cria-se uma div
+    // e nesta resposta data-correct ele armazena true ou false que seria a resposta certa
+    item.answers.forEach((resposta) => {
+        const div = document.createElement("div");
+
+        div.innerHTML = `
+            <button class="resposta" data-correct="${resposta.correct}">
+                ${resposta.option}
+            </button>
+        `;
+
+        respostas.appendChild(div);
+    });
+
+    document.querySelectorAll(".resposta").forEach((item) => {
+        item.addEventListener("click", nextQuestion);
+    });
+}
+
+// Essa função vai carregar assim que acessar o documento
+loadQuestion();
+
+btnFinalizar.onclick = () => {
+    container.style.display = "flex";
+    containerFinalizar.style.display = "none";
+
+    currentIndex = 0;
+    perguntaCorreta = 0;
+    loadQuestion();
+};
+
+function finish() {
+    textoFinalizar.innerHTML = `Você acertou ${perguntaCorreta} de ${questions.length}`;
+    container.style.display = "none";
+    containerFinalizar.style.display = "flex";
+}
+
+function nextQuestion(e) {
+    const isCorrect = e.target.getAttribute("data-correct") === "true";
+    if (isCorrect) {
+        perguntaCorreta++;
+    }
+
+    // Verifica se não é a última questão
+    // se não for carrega a próxima, se for finaliza
+    if (currentIndex < questions.length - 1) {
+        currentIndex++;
+        loadQuestion();
+    } else {
+        finish();
+    }
+}
+
+</script>

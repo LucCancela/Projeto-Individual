@@ -20,13 +20,15 @@
   <!--header inicio-->
   <div class="header">
     <div class="container">
-      <h1 class="titulo">AquaTech</h1>
+      <h1 class="titulo">
+        <a href="./index.html">Um Mundo Dissonante</a> 
+      </h1>
       <ul class="navbar">
         <li>
           <a href="index.html">Inicial</a>
         </li>
         <li>
-          <a href="formulario.html">Simulador</a>
+          <a href="Quiz.html">Quiz</a>
         </li>
         <li>|</li>
         <li>
@@ -55,22 +57,12 @@
               Assim que inserir vá para o script abaixo.
           -->
           <div class="campo">
-            <span>Empresa:</span>
-            <select name="empresas" id="listaEmpresas">
-              <option selected>Selecione uma empresa</option>
-            </select>
-          </div>
-          <div class="campo">
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
           </div>
           <div class="campo">
             <span>E-mail:</span>
             <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-          </div>
-          <div class="campo">
-            <span>CPF:</span>
-            <input id="cpf_input" type="text" placeholder="Seu CPF" />
           </div>
           <div class="campo">
             <span>Senha:</span>
@@ -80,7 +72,11 @@
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
-          <button class="botao" onclick="cadastrar()">Cadastrar</button>
+
+          <div class="botao_alinhamento">
+            <button class="botao" onclick="cadastrar()">Cadastrar</button>
+            <button class="botao" onclick="Login()"><a href="login.html">Logar-se  </a></button>
+          </div>
         </div>
         <div id="div_aguardar" class="loading-div">
           <img src="./assets/circle-loading.gif" id="loading-gif" />
