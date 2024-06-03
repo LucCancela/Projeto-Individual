@@ -17,6 +17,10 @@
 
 <body>
 
+    <header>
+        <button  class="btnVoltar"><a href="index.html">Voltar</a></button>
+    </header>
+
     <!--header inicio-->
     <!-- <div class="header">
         <div class="container">
@@ -34,9 +38,10 @@
                 </li>
             </ul>
         </div>
-    </div> -->
+    </div>  -->
+    <!-- header fim -->
 
-    <h2>Quiz Músicas</h2>
+    <h2>Quiz Adivinhe a Música pelo Verso</h2>
     <main>
 
         <div class="container">
@@ -46,7 +51,7 @@
         </div>
         <div class="finalizar">
             <span></span>
-            <button>Reiniciar</button>
+            <button class="reiniciar">Reiniciar</button>
         </div>
 
     </main>
@@ -69,36 +74,36 @@
 <script>
 const questions = [
     {
-        question: "Qual é esta música",
+        question: "Que Deus me guarde, pois eu sei que ele não é neutro Vigia os rico, mas ama os que vem do gueto Eu visto preto por dentro e por fora Guerreiro, poeta, entre o tempo e a memória",
         answers: [
-            { option: "3", correct: true },
-            { option: "2", correct: false },
-            { option: "4", correct: false },
+            { option: "Da ponte pra cá - Racionais", correct: false },
+            { option: "Nego Drama - Racionais", correct: true },
+            { option: "A vida é um Desafio - Racionais", correct: false },
         ],
     },
     {
-        question: "Quanto é 5 x 2?",
+        question: "Permita que eu fale, não as minhas cicatrizes Elas são coadjuvantes, não, melhor, figurantes Que nem devia tá aqui Permita que eu fale, não as minhas cicatrizes Tanta dor rouba nossa voz, sabe o que resta de nós? Alvos passeando por aí",
         answers: [
-            { option: "9", correct: false },
-            { option: "10", correct: true },
-            { option: "11", correct: false },
+            { option: "Sobe Junto - Emicida", correct: false },
+            { option: "Levanta e Anda - Emicida", correct: false },
+            { option: "Amarelo - Emicida", correct: true },
             
         ],
     },
     {
-        question: "Quanto é 10 x 8?",
+        question: "Um bom lugar Se constrói com humildade, é bom lembrar Aqui é o mano Sabotage Vou seguir sem pilantragem, vou honrar, provar No Brooklyn, tô sempre ali Pois vou seguir, com Deus enfim",
         answers: [
-            { option: "800", correct: false },
-            { option: "90", correct: false },
-            { option: "80", correct: true },
+            { option: "Na Zona Sul - Sabotage", correct: false },
+            { option: "Mun-Rá - Sabotage", correct: false },
+            { option: "Um Bom Lugar - Sabotage", correct: true },
         ],
     },
     {
-        question: "Quanto é 7 x 7?",
+        question: "Equilibrado num barranco, um cômodo mal acabado e sujo Porém, seu único lar, seu bem e seu refúgio Um cheiro horrível de esgoto no quintal Por cima ou por baixo, se chover será fatal Um pedaço do inferno, aqui é onde eu estou Até o IBGE passou aqui e nunca mais voltou",
         answers: [
-            { option: "70", correct: false },
-            { option: "56", correct: false },
-            { option: "49", correct: true },
+            { option: "Homem na estrada - Racionais", correct: true },
+            { option: "Vida Loka pt1 - Racionais", correct: false },
+            { option: "Fórmula Mágica da Paz - Racionais", correct: false },
         ],
     },
 ];
@@ -114,6 +119,9 @@ const btnFinalizar = document.querySelector(".finalizar button");
 
 let currentIndex = 0;
 let perguntaCorreta = 0;
+let pontuacao = 0;
+const pontuacaoFinal = [];
+
 
 function loadQuestion() {
     span_Qtd.innerHTML = ` ${currentIndex + 1}/${questions.length} `;
@@ -135,6 +143,7 @@ function loadQuestion() {
             </button>
         `;
 
+
         respostas.appendChild(div);
     });
 
@@ -152,11 +161,13 @@ btnFinalizar.onclick = () => {
 
     currentIndex = 0;
     perguntaCorreta = 0;
+    pontuacao = 0;
     loadQuestion();
 };
 
 function finish() {
-    textoFinalizar.innerHTML = `Você acertou ${perguntaCorreta} de ${questions.length}`;
+    pontuacaoFinal.push(pontuacao);
+    textoFinalizar.innerHTML = `Você acertou ${perguntaCorreta} de ${questions.length} sua pontuação é ${pontuacaoFinal[pontuacaoFinal.length-1]}`;
     container.style.display = "none";
     containerFinalizar.style.display = "flex";
 }
@@ -165,6 +176,20 @@ function nextQuestion(e) {
     const isCorrect = e.target.getAttribute("data-correct") === "true";
     if (isCorrect) {
         perguntaCorreta++;
+
+        if(perguntaCorreta == 1){
+            pontuacao += 1;
+
+        }else if(perguntaCorreta == 2){
+            pontuacao += 3;
+
+        }else if(perguntaCorreta == 3){
+            pontuacao += 1;
+
+        }else if(perguntaCorreta == 4){
+            pontuacao += 4;
+        }
+
     }
 
     // Verifica se não é a última questão
@@ -173,6 +198,7 @@ function nextQuestion(e) {
         currentIndex++;
         loadQuestion();
     } else {
+        pontuacao += 1;
         finish();
     }
 }
