@@ -84,6 +84,8 @@
                 const logins = data.map(item => item.Logins);
                 const respostas = data.map(item => item.Respostas);
 
+                const qtdLogins = logins.length;
+
                 document.getElementById('numLogins').textContent = logins[logins.length - 1];
                 document.getElementById('numRespostas').textContent = respostas[respostas.length - 1];
 
