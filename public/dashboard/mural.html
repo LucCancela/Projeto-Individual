@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaTech | Avisos</title>
 
-    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/data.css">
     <link rel="stylesheet" href="./../css/style.css" />
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
@@ -26,20 +26,15 @@
 
         <div class="header-left">
 
-            <h1>AquaTech</h1>
+            <h1>Um Mundo <br> Dissonate</h1>
+            <h2>Forum</h2>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
             <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
+                <a href="./data.html">
                     <h3>Gráficos</h3>
                 </a>
             </div>
@@ -149,35 +144,35 @@
 
     }
 
-    function editar(idAviso) {
-        sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
-        console.log("cliquei em editar - " + idAviso);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
-        window.location = "/dashboard/edicao-aviso.html"
+    // function editar(idAviso) {
+    //     sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
+    //     console.log("cliquei em editar - " + idAviso);
+    //     window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
+    //     window.location = "/dashboard/edicao-aviso.html"
 
-    }
+    // }
 
-    function deletar(idAviso) {
-        console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        fetch(`/avisos/deletar/${idAviso}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
+    // function deletar(idAviso) {
+    //     console.log("Criar função de apagar post escolhido - ID" + idAviso);
+    //     fetch(`/avisos/deletar/${idAviso}`, {
+    //         method: "DELETE",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     }).then(function (resposta) {
 
-            if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
+    //         if (resposta.ok) {
+    //             window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+    //             window.location = "/dashboard/mural.html"
+    //         } else if (resposta.status == 404) {
+    //             window.alert("Deu 404!");
+    //         } else {
+    //             throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+    //         }
+    //     }).catch(function (resposta) {
+    //         console.log(`#ERRO: ${resposta}`);
+    //     });
+    // }
 
     function atualizarFeed() {
         fetch("/avisos/listar").then(function (resposta) {
@@ -235,13 +230,13 @@
 
                         divButtons.className = "div-buttons";
 
-                        btnEditar.className = "publicacao-btn-editar";
-                        btnEditar.id = "btnEditar" + publicacao.idAviso;
-                        btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
+                        // btnEditar.className = "publicacao-btn-editar";
+                        // btnEditar.id = "btnEditar" + publicacao.idAviso;
+                        // btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
 
-                        btnDeletar.className = "publicacao-btn-editar";
-                        btnDeletar.id = "btnDeletar" + publicacao.idAviso;
-                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
+                        // btnDeletar.className = "publicacao-btn-editar";
+                        // btnDeletar.id = "btnDeletar" + publicacao.idAviso;
+                        // btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
 
                         divPublicacao.appendChild(spanID);
                         divPublicacao.appendChild(spanNome);
@@ -249,19 +244,19 @@
                         divPublicacao.appendChild(spanTitulo);
                         divPublicacao.appendChild(divDescricao);
                         divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
+                        // divButtons.appendChild(btnEditar);
+                        // divButtons.appendChild(btnDeletar);
                         feed.appendChild(divPublicacao);
                     }
 
-                    finalizarAguardar();
+                    // finalizarAguardar();
                 });
             } else {
                 throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
             console.error(resposta);
-            finalizarAguardar();
+            // finalizarAguardar();
         });
     }
 

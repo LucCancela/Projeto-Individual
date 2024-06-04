@@ -1,9 +1,7 @@
 // controller da dasboard
-
 var dashboardModel = require("../models/dashboardModel");
 
 function getDashboardData(req, res) {
-
     dashboardModel.getDashboardData()
     .then(results => {
         if(results) {
