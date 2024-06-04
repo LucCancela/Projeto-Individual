@@ -1,36 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-header{
-
-  display: flex;
-  margin: 0;
-
-}
 
 .btnVoltar{
 
-  width: 10vh;
-  height: 5vh;
+  margin-top: 5vh;
+  padding: 15px 30px;
+
+  border: 3px solid #fff;
+  border-radius: 10px;
 
   justify-content: center;
   align-items: center;
 
-  background-color: rgb(255, 255, 255);
-
+  background-color: rgb(31, 31, 31);
 }
 
 .btnVoltar a{
-
   
-  color: #323232;
+  font-weight: bold;
   text-decoration: none;
 
-  border-radius: 2px;
   font-size: 2vh;
-
+  
   cursor: pointer;
-
+  
+  color: #fff;
 }
 
 body {
@@ -65,9 +60,8 @@ main {
     padding: 10px;
     border-radius: 10px;
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     min-height:250px;
-
 
 }
 
@@ -82,7 +76,7 @@ button{
 
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     gap: 10px;
 
     font-size: large;
@@ -102,15 +96,24 @@ finalizar
 
 }
 
+#pergunta{
+
+  text-align: justify;
+
+}
+
 #respostas{
 
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
+    font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
 
 .resposta{
+
+    font-size: medium;
 
     text-align: start;
 
@@ -121,7 +124,7 @@ finalizar
 
     cursor: pointer;
 
-    background-color: black;
+    background-color: rgb(23, 23, 23);
     color: white;
 
 }
@@ -136,14 +139,36 @@ finalizar
 
 .finalizar button{
 
-    text-align: center;
-    color: white;
-    background-color: #323232;
+  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: large;
 
-    cursor: pointer;
+  color: #fff;
+  margin-top: 5vh;
+  padding: 15px 30px;
+
+  border: 3px solid #fff;
+  border-radius: 10px;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(31, 31, 31);
 
 }
 
+
+.finalizar a{
+  
+  font-weight: bold;
+  text-decoration: none;
+
+  font-size: 2vh;
+  
+  cursor: pointer;
+  
+  color: #fff;
+}
 
 
 /*   

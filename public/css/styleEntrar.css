@@ -15,7 +15,7 @@
   
   .card {
     width: 50%;
-    background-color: #e5e5e5;
+    background-color: #e5e5e5bb;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -44,10 +44,11 @@
     font-size: 15px;
     font-weight: 800;
     color: #323232;
+    padding: 8px;
   }
   
   .formulario input {
-    border: 2px solid #32b9cd;
+    border: 2px solid #323232;
     text-align: center;
     border-radius: 10px;
     margin: 0;
@@ -75,10 +76,9 @@
     font-family: "Barlow", sans-serif;
     
     
-    width: 120px;
-    height: 30px;
+
     margin-top: 20px;
-    
+    padding: 10px 20px;
     
     border: 0;
     border-radius: 5px;
@@ -123,12 +123,12 @@
   
   .card-cadastro{
     width: 50%;
-    background-color: #e5e5e5;
+    background-color: #e5e5e5bb;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    color: palevioletred;
+    color: rgb(46, 46, 46);
     flex-direction: column;
     height: fit-content;
     padding: 20px 0;

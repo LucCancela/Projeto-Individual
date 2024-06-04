@@ -89,10 +89,16 @@
 
   <!--footer inicio-->
   <div class="footer">
-    <div class="container">
-      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-      <span class="version">v1.0.0</span>
+    <div class="container-navegacao">
+      <h5>Navegação</h4>
+      <a href="index.html">Index</a>
+      <a href="Quiz.html">Quiz</a>
+      <a href="login.html">Entrar</a>
     </div>
+    <div class="container">
+      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2024</h4>
+    </div>
+   <span>Um Mundo <br>Dissonante</span>
   </div>
   <!--footer fim-->
 </body>
@@ -124,21 +130,21 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "(Preencha todos os campos!)";
 
       finalizarAguardar();
       return false;
     }else if(nomeVar.length <= 1){
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Quantidade de caracteres do nome inválida)";
+        "(Quantidade de caracteres do nome inválida!)";
 
       finalizarAguardar();
       return false;
     } else if(arrobaIndex == -1 || pontoIndex == -1){
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Email inválido)";
+        "(Email inválido!)";
 
       finalizarAguardar();
       return false;
@@ -146,7 +152,7 @@
     }else if(senhaVar.length <= 6){
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Senha muito pequena)";
+        "(Senha muito pequena!)";
 
       finalizarAguardar();
       return false;
@@ -154,7 +160,7 @@
     }else if(confirmacaoSenhaVar != senhaVar){
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Confirmação senha diferente da senha)";
+        "(Confirmação senha diferente da senha!)";
 
       finalizarAguardar();
       return false;

@@ -5,7 +5,7 @@ var database = require("../database/config");
 function getDashboardData() {
     console.log("ACESSEI O DASHBOARD MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED', \n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de BD está rodando corretamente. \n\n function getDashboardData()");
 
-    var instrucaoSql = `select * from viewDashboard JOIN viewKpis;`;
+    var instrucaoSql = `select * from viewDashboard join viewKpis order by respostas;`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 

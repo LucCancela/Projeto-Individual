@@ -70,6 +70,7 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+
     function fetchData() {
         fetch('/dashboard/getDashboardData', { cache: 'no-store', method: 'GET' })
             .then(response => {
@@ -84,7 +85,13 @@
                 const logins = data.map(item => item.Logins);
                 const respostas = data.map(item => item.Respostas);
 
-                const qtdLogins = logins.length;
+                const ordenado = logins.sort();    
+
+                // const tamanhoLogin = ordenado.slice(logins[logins.length -2], logins[logins.length - 1])
+                
+                // const qtdLogins = logins[logins.length - 1];
+                console.log(ordenado.length - 1)
+
 
                 document.getElementById('numLogins').textContent = logins[logins.length - 1];
                 document.getElementById('numRespostas').textContent = respostas[respostas.length - 1];
@@ -93,7 +100,7 @@
                 const ctx2 = document.getElementById('myChart2').getContext('2d');
 
                 const myChart = new Chart(ctx, {
-                    type: 'line',
+                    type: 'bar',
                     data: {
                         labels: logins,
                         datasets: [{
