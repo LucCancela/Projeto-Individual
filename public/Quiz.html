@@ -11,7 +11,7 @@
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/styleQuiz.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="icon" href="./assets/icon/logo.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
@@ -171,6 +171,7 @@ function finish() {
 
 function nextQuestion(e) {
     const isCorrect = e.target.getAttribute("data-correct") === "true";
+    
     if (isCorrect) {
         perguntaCorreta++;
 

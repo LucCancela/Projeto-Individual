@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/styleEntrar.css">
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
+  <link rel="icon" href="./assets/icon/logo.ico">
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -121,6 +121,39 @@
     // Verificação
     const arrobaIndex = emailVar.indexOf('@');
     const pontoIndex = emailVar.indexOf('.');
+    const validacaoArroba = senhaVar.indexOf('@');
+    const validacaoPorcent = senhaVar.indexOf('%');
+    const validaCifrao = senhaVar.indexOf('$');
+    const validacaoExclamacao = senhaVar.indexOf('!');
+
+    let validadorSenha = false;
+    let validadorSenhaEspecial = false;
+
+    for (let contador = 0; contador <= 9; contador ++){
+      if(senhaVar.indexOf(contador) >= 0){
+        validadorSenha = true;
+
+        break;
+      }
+    }
+
+    for (let contador = 0; contador <= 9; contador ++){
+
+      if(validacaoArroba != -1){
+        validadorSenhaEspecial = true;
+        break;
+
+      }else if(validaCifrao != -1 ){
+        validadorSenhaEspecial = true;
+        break;
+
+      }else if(validacaoExclamacao != -1){
+        validadorSenhaEspecial = true;
+        break;
+
+      }
+
+    }
 
     if (
       nomeVar == "" ||
@@ -149,10 +182,18 @@
       finalizarAguardar();
       return false;
 
-    }else if(senhaVar.length <= 6){
+    }else if(senhaVar.length < 8 || validadorSenha == false){
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Senha muito pequena!)";
+        "(Senha Inválida! deve conter pelo menos 8 dígitos e números)";
+
+      finalizarAguardar();
+      return false;
+
+    }else if(validadorSenhaEspecial == false){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Senha Inválida! deve conter caracteres especiais)";
 
       finalizarAguardar();
       return false;

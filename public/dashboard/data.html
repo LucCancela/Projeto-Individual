@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./../css/data.css">
     <link rel="stylesheet" href="./../css/style.css" />
+    <link rel="icon" href="../assets/icon/logo.ico">
     <script src="../js/sessao.js"></script>
 
 </head>
@@ -29,7 +31,7 @@
 
             <div class="btn-nav-white">
                 <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                    <h3>Mural de Músicas</h3>
                 </a>
             </div>
 
@@ -47,7 +49,7 @@
                 <p id="numLogins"></p>
             </div>
             <div class="kpi-card" id="respostaCard">
-                <h3>Número de Respostas</h3>
+                <h3>Número de Músicas</h3>
                 <p id="numRespostas"></p>
             </div>
         </div>
@@ -84,6 +86,7 @@
 
                 const logins = data.map(item => item.Logins);
                 const respostas = data.map(item => item.Respostas);
+                const titulos = data.map(item => item.titulo);
 
                 const ordenado = logins.sort();    
 
@@ -123,9 +126,9 @@
                 const myChart2 = new Chart(ctx2, {
                     type: 'line',
                     data: {
-                        labels: logins,
+                        labels: titulos,
                         datasets: [{
-                            label: 'Número de Respostas',
+                            label: 'Número de Músicas',
                             data: respostas,
                             backgroundColor: 'rgba(138, 43, 226, 0.2)',
                             borderColor: 'rgba(138, 43, 226, 1)',
